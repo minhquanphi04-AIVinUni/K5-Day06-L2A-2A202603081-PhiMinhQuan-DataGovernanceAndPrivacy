@@ -1,0 +1,6 @@
+member,git_author_name,git_email,role,modules_files,commit_shas,evidence_note,presenter
+Member 1,TODO-ten-that,TODO-email@school.edu,Lead / Integrator,src/main.py; configs/lab.yaml; configs/tracks/t08.yaml,TODO-sha,Chốt config + freeze params (precedence/decision) trước khi eval,Member 1
+Member 2,TODO-ten-that,TODO-email@school.edu,Data & fixtures,fixtures/t08_deletion; src/common/manifest.py; provenance,TODO-sha,Verify manifest sha256 (data_graph + requests) + schema validation ở bước load,Member 2
+Member 3,TODO-ten-that,TODO-email@school.edu,Core algorithm,src/pipeline.py; src/baseline.py,TODO-sha,Deletion resolver (scope + BFS cascade + precedence legal hold > permission > origin > multi-subject) + baseline raw-only,Member 3
+Member 4,TODO-ten-that,TODO-email@school.edu,QA / metric,tests/test_pipeline_t08.py; tests/test_cli.py; reports/metric_contract.md,TODO-sha,11 test (E2E + cascade + zero false-delete + edge) + metric contract + determinism check,Member 4
+Member 5,TODO-ten-that,TODO-email@school.edu,Human review + report,reports/group_report.md; out/poc/review_queue.csv; out/poc/contact_sheet.html; audit_log,TODO-sha,Review queue exception + override flow + audit log + report + DEMO,Member 5

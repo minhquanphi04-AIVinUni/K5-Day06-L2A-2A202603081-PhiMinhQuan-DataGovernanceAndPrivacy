@@ -42,6 +42,8 @@ def main() -> int:
 
     for t, spec in sorted(TRACKS.items()):
         d = ROOT / "fixtures" / spec.fixture_dir
+        if not d.exists():
+            continue  # standalone single-track folder: other fixtures are not shipped here
         probs = verify_manifest(d / "manifest.csv") if (d / "manifest.csv").exists() else ["missing manifest"]
         # gt/ ships only with the instructor overlay; verify it when present
         if (d / "gt" / "manifest.csv").exists():

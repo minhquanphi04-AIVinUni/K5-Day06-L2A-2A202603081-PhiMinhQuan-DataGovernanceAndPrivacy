@@ -1,0 +1,30 @@
+# ============================================================
+# Group config — G00 (Day06, track t08 · Retention & Delete Request Simulator)
+# Values here override the track defaults loaded from `track_config`.
+# ============================================================
+group_id: G00
+owner: "QA Lead — Group G00"       # signer of every Decision (change to a real name/role)
+track_config: tracks/t08.yaml
+track: t08
+input: fixtures/t08_deletion
+output: out/
+seed: 42
+offline: true
+strict_provenance: true
+
+# ------------------------------------------------------------------
+# FROZEN params (chốt TRƯỚC khi xem kết quả eval; không tune lại sau).
+# Policy precedence theo docs/tracks/T08.md §8:
+#   legal hold > permission > unknown origin > identity > multi-subject > delete.
+# Không có nhãn nào được dùng để chọn tham số (pipeline không đọc gt/ — GT guard).
+# Chi tiết: reports/metric_contract.md.
+# ------------------------------------------------------------------
+params:
+  budget: 20                        # review budget B (top-B hàng rủi ro nhất cho người duyệt)
+  dry_run: true                     # KHÔNG bao giờ xoá dữ liệu thật — chỉ simulate trên artefact mock
+  operator_acl: data-platform       # ACL mà operator xóa phải có trên artefact; thiếu -> escalate
+  require_identity_verified: true   # request chưa verify danh tính -> escalate
+
+  decision:                         # policy GO/HOLD/REWORK (frozen)
+    go_max_exceptions: 0            # GO chỉ khi 0 exception (retain_legal_hold + escalate)
+    rework_if_unresolved_requests: true   # request trỏ tới subject không có trong graph -> REWORK

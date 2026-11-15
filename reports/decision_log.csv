@@ -1,0 +1,2 @@
+ts,scope,status,canonical,reason_code,reason,owner,evidence
+2026-11-13T21:44:52+00:00,t08,HOLD,HOLD,EXCEPTIONS_NEED_HUMAN_SIGNOFF,30 exception (retain_legal_hold/escalate) cần người duyệt ký duyệt trước khi thực thi; xoá đúng phần không vướng exception.,QA Lead — Group G00,out\poc\review_queue.csv;out\poc\deletion_plan.csv

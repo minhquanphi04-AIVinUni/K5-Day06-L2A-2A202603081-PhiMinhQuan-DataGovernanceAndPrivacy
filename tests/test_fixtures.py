@@ -13,6 +13,8 @@ FX = Path("fixtures")
 @pytest.mark.parametrize("track", sorted(TRACKS))
 def test_manifest_hashes_match(track):
     d = FX / TRACKS[track].fixture_dir
+    if not d.exists():
+        pytest.skip("fixture not shipped in this standalone single-track folder")
     m = d / "manifest.csv"
     assert m.exists(), f"{m} missing"
     assert list(pd.read_csv(m, nrows=0).columns) == MANIFEST_COLUMNS
